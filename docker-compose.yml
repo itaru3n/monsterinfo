@@ -1,0 +1,15 @@
+monsterinfoweb:
+  build: .
+  ports:
+    - "80:80"
+  links:
+    - monsterinfodb
+  volumes:
+    - .:/code
+monsterinfodb:
+  image: "mysql:5"
+  volumes:
+    - ./mysql:/etc/mysql/conf.d
+  environment:
+    MYSQL_ROOT_PASSWORD: monsterinfopw
+    MYSQL_DATABASE: monsterinfo
